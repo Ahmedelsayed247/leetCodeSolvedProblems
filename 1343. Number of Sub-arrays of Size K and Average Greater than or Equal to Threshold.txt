@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int numOfSubarrays(vector<int>& arr, int k, int threshold) {
+        int n = arr.size() ;
+        int  cnt = 0 ;
+        double avg = 0;
+        for (int i=0 ; i< k ; i++ ) {
+            avg+=(double)arr[i]/k; 
+        }
+       (avg >= threshold) ? cnt ++ :cnt = 0;
+        int rmv = 0 ;
+        for (int j = k ; j < n ; j++ ) {
+            avg-=(double)arr[rmv]/k;
+            avg+=(double)arr[j]/k;
+            if(avg >= threshold)  cnt ++ ;
+            rmv++ ;
+
+        }
+
+        return cnt ;
+    }
+};
